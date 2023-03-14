@@ -1,2 +1,2 @@
 #!/bin/bash
-echo | uniq -u
+echo | uniq -u | pr | lpr
