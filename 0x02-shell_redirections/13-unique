@@ -1,2 +1,2 @@
 #!/bin/bash
-echo | uniq | pr | lpr
+echo | sort | uniq | pr | lpr
