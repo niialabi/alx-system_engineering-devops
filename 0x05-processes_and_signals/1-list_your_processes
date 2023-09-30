@@ -1,0 +1,2 @@
+# This script prints currently running processes
+ps -uxaf
