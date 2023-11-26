@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # server details
 username="ubuntu"
-host="54.146.69.220"
+host_ip="54.146.69.220"
 private_key="~/.ssh/school"
 
 # establishing connection
