@@ -12,8 +12,7 @@ exec {'get_nginx' :
     require => exec['update_server'],
 }
 
-file { 'hello_world' :
-    path    => '/var/www/html/index.nginx-debian.html',
+-> file { '/var/www/html/index.nginx-debian.html':
     content => 'Hello World!',
 }
 
