@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Install nginx web server
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+
+custom_404_path="/var/www/html/404.html"
+echo "<html><head><title>404 Not Found</title></head><body><h1>404 Not Found</h1><p>Ceci n'est pas une page</p></body></html>" | sudo tee "$custom_404_path" > /dev/null
+
+nginx_config_path="/etc/nginx/sites-enabled/default"
+sudo sed -i -e "/server_name _;/a \\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}" "$nginx_config_path"
+
+sudo service nginx restart
+
