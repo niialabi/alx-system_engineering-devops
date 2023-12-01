@@ -9,7 +9,7 @@ exec {'update_server' :
 exec {'get_nginx' :
     command => 'apt-get -y install nginx',
     path    => '/usr/bin:/bin',
-    require => exec['update_server'],
+    require => Exec['update_server'],
 }
 
 -> file { '/var/www/html/index.nginx-debian.html':
