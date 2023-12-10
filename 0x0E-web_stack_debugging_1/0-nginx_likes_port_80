@@ -2,8 +2,5 @@
 # fix port 80 nginx config
 
 config_file="/etc/nginx/sites-available/default"
-new_line="listen 80 default_server ipv6only=on;"
-line_to_remove="listen [::]:80 default_server ipv6only=on;"
-sed -i "19s/.*/$new_line/" "$config_file"
-sed -i "/$line_to_remove/d" "$config_file"
+sed -i 's/[0-9]\+ default_server/80 default_server/' "$config_file"
 service nginx restart
