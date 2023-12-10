@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 # fix port 80 nginx config
 
-# listen [::]:80 default_server ipv6only=on;
-# listen [::]:80 default_server;
-# file_path="/etc/nginx/sites-available/default"
-apt-get update
-apt-get install -y nginx
-service nginx start
-new_line="listen [::]:80 default_server;"
-sed -i "20s/.*/$new_line/" /etc/nginx/sites-available/default
+config_file="/etc/nginx/sites-available/default"
+new_line="listen 80 default_server ipv6only=on;"
+line_to_remove="listen [::]:80 default_server ipv6only=on;"
+sed -i "19s/.*/$new_line/" "$config_file"
+sed -i "/$line_to_remove/d" "$config_file"
 service nginx restart
