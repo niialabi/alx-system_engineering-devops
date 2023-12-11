@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # same thing new way
 
-#!/bin/bash
 sed -i 's/[0-9]\+ default_server/80 default_server/' /etc/nginx/sites-enabled/default
 if ! pgrep -x "nginx" >/dev/null; then
     echo "nginx is not running"
