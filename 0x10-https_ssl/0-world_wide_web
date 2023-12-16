@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# and write a Bash script that will display information about subdomains.
+extraction_print() {
+  local domain="$1"
+  local sub="$2"
+  local result
+  result=$(dig "$sub.$domain" | grep -A1 'ANSWER SECTION:')
+  local ip
+  ip=$(echo "$result" | awk '/IN[[:space:]]+A/ {print $5}' | tail -1)
+  local rec_type
+  rec_type=$(echo "$result" | awk '/IN[[:space:]]+A/ {print $4}' | tail -1)
+  echo "The subdomain $sub is a $rec_type record and points to $ip"
+}
+
+if [ $# -eq 2 ]; then
+  extraction_print "$1" "$2"
+else
+  subdomains=('www' 'lb-01' 'web-01' 'web-02')
+  for sub in "${subdomains[@]}"; do
+    extraction_print "$1" "$sub"
+  done
+fi
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Install nginx web server
+
+default_line="server_name _;"
+new_line="server_name _;\n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+
+sudo apt-get -y update
+sudo apt -y install nginx
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+sudo sed -i -e "s|$default_line|$new_line|" /etc/nginx/sites-enabled/default
+sudo service nginx restart
