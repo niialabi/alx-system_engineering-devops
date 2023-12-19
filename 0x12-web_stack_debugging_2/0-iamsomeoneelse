@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# bash script that runs whoami cmd
+if [ $# -lt 2 ]; then
+	su -c whoami root
+else
+	su -c whoami "$2"
+fi
