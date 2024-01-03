@@ -6,8 +6,8 @@ script requests todo list of given employee
 import requests
 from sys import argv
 
-user_id = int(argv[1])
 if __name__ == "__main__":
+    user_id = int(argv[1])
     u = requests.get(f"https://jsonplaceholder.typicode.com/users/{user_id}")
     t = requests.get(f"https://jsonplaceholder.typicode.com/todos")
 
