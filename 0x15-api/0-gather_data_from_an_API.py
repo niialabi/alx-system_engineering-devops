@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""script requests todo list of given employee"""
+"""
+script requests todo list of given employee
+"""
 
 import requests
 from sys import argv
@@ -22,6 +24,6 @@ if __name__ == "__main__":
     todo_count = selected_sets.__len__()
     mid_s = "is done with tasks"
     s = f"Employee {user_data['name']} {mid_s}({done_count}/{todo_count}): "
-    print(s )
+    print(s)
     for selected in done:
         print(f"\t{selected['title']}")
