@@ -18,7 +18,10 @@ if __name__ == "__main__":
     selected_sets = [s for s in todo_data if s['userId'] == user_id]
     done = [d for d in selected_sets if d['completed'] is True]
 
-    print(f"Employee {user_data['name']} is done with tasks(
-        {done.__len__()}/{selected_sets.__len__()}): ")
+    done_count = done.__len__()
+    todo_count = selected_sets.__len__()
+    mid_s = "is done with tasks"
+    s = f"Employee {user_data['name']} {mid_s}({done_count}/{todo_count}): "
+    print(s)
     for selected in done:
         print(f"\t{selected['title']}")
