@@ -26,4 +26,4 @@ if __name__ == "__main__":
     s = f"Employee {user_data['name']} {mid_s}({done_count}/{todo_count}): "
     print(s)
     for selected in done:
-        print(f"\t{selected['title']}")
+        print("\t {}".format(selected['title']))
